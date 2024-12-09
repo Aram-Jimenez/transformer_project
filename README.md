@@ -174,7 +174,7 @@ This project utilized three sequential approaches to model development, leveragi
 Below are the confusion matrices for each model, providing a detailed view of classification performance. They highlight areas where the models performed well and where they struggled.
 
 #### Baseline Model
-![Baseline Model Confusion Matrix](images/initial_model.png)
+![Baseline Model Confusion Matrix](images/inital_model.png)
 
 #### Improved Model
 ![Improved Model Confusion Matrix](images/improved_model.png)
