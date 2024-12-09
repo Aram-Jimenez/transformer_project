@@ -169,3 +169,26 @@ This project utilized three sequential approaches to model development, leveragi
 4. **Challenges Persist**:
    - All models struggled with ambiguous labels and dataset imbalance, limiting their ability to achieve significant accuracy improvements.
 
+
+### Confusion Matrices
+Below are the confusion matrices for each model, providing a detailed view of classification performance. They highlight areas where the models performed well and where they struggled.
+
+#### Baseline Model
+
+
+#### Improved Model
+
+#### Fine-Tuned Model
+
+
+
+### Insights from Confusion Matrices
+1. **Baseline Model**:
+   - Performed best on common labels like "Mostly True" and "Half True."
+   - Significant misclassification across adjacent categories like "Barely True" and "Half True."
+
+2. **Improved Model**:
+   - Weighted loss improved performance on "Pants on Fire" but introduced some misclassification in more frequent classes like "True."
+
+3. **Fine-Tuned Model**:
+   - Hyperparameter tuning balanced some performance but struggled to address dataset limitations, with confusion persisting between ambiguous labels.
