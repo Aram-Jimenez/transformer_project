@@ -78,5 +78,94 @@ This dataset provides a rich resource for training fact-checking models but pose
 - Achieved the highest six-way classification accuracy to date (**37.4%**) on LIAR-PLUS but noted limitations in metadata integration.
 
 
+## Model
 
+This project utilized three sequential approaches to model development, leveraging the LIAR dataset for classification into six labels: True, Mostly True, Half True, Barely True, False, and Pants on Fire.
+
+
+
+### 1. Baseline Model
+- **Description**: The baseline model fine-tuned `bert-base-uncased` using both statement text and enriched metadata:
+  - **Speaker**
+  - **Party affiliation**
+  - **Context**
+  These features were combined into a single input string separated by `[SEP]` tokens. This approach established a reference point for evaluating improvements.
+- **Implementation**:
+  - Used Hugging Face's `Trainer` API for fine-tuning.
+  - Trained for 3 epochs with a learning rate of `2e-5`.
+  - Evaluated performance based on weighted F1 score and accuracy.
+- **Metrics**:
+  - **Validation Loss**: 1.677
+  - **Validation Accuracy**: 30.37%
+  - **Validation F1**: 0.303
+  - **Test Loss**: 1.640
+  - **Test Accuracy**: 28.37%
+  - **Test F1**: 0.282
+
+
+
+### 2. Improved Model
+- **Description**: The improved model addressed the class imbalance in the LIAR dataset by implementing a weighted loss function. The weights were inversely proportional to the frequency of each label, ensuring underrepresented classes like "Pants on Fire" contributed more to the loss calculation.
+- **Implementation**:
+  - Customized the Hugging Face `Trainer` to apply a weighted cross-entropy loss during training.
+  - Used the same enriched inputs and training setup as the baseline model.
+  - Trained for 3 epochs with the same learning rate (`2e-5`).
+- **Metrics**:
+  - **Validation Loss**: 1.994
+  - **Validation Accuracy**: 28.04%
+  - **Validation F1**: 0.282
+  - **Test Loss**: 1.920
+  - **Test Accuracy**: 27.98%
+  - **Test F1**: 0.280
+- **Insights**:
+  - Weighted loss improved performance for underrepresented classes.
+  - Overall accuracy and F1 scores remained comparable to the baseline, highlighting the need for additional improvements.
+
+
+### 3. Fine-Tuned Model
+- **Description**: The fine-tuned model focused on hyperparameter optimization to improve training stability and generalization:
+  - Lowered the learning rate to `1e-5`.
+  - Increased the number of epochs to 5.
+  - Reduced batch size to 8 and used gradient accumulation to simulate a larger batch size.
+  - Applied a higher weight decay for regularization.
+- **Implementation**:
+  - Used the same enriched input format as the baseline and improved models.
+  - Trained using the Hugging Face `Trainer` with fine-tuned training arguments.
+- **Metrics**:
+  - **Validation Loss**: 2.728
+  - **Validation Accuracy**: 27.02%
+  - **Validation F1**: 0.271
+  - **Test Loss**: 2.646
+  - **Test Accuracy**: 27.36%
+  - **Test F1**: 0.272
+- **Insights**:
+  - Hyperparameter optimization reduced overfitting but did not significantly improve metrics.
+  - Highlighted the limitations of small datasets like LIAR for nuanced classification tasks.
+
+
+
+### Model Comparison
+| Model              | Validation Loss | Validation Accuracy (%) | Validation F1 | Test Loss | Test Accuracy (%) | Test F1   |
+|--------------------|-----------------|--------------------------|---------------|-----------|-------------------|-----------|
+| Baseline           | 1.677           | 30.37                   | 0.303         | 1.640     | 28.37            | 0.282     |
+| Improved           | 1.994           | 28.04                   | 0.282         | 1.920     | 27.98            | 0.280     |
+| Fine-Tuned         | 2.728           | 27.02                   | 0.271         | 2.646     | 27.36            | 0.272     |
+
+
+
+### Key Takeaways
+1. **Baseline Model**:
+   - Achieved strong starting performance by incorporating enriched metadata in the input.
+   - Demonstrated the potential of transformer models for fact-checking tasks.
+
+2. **Improved Model**:
+   - Addressed class imbalance using weighted loss, benefiting underrepresented classes.
+   - Metrics remained similar to the baseline, indicating limited impact on overall performance.
+
+3. **Fine-Tuned Model**:
+   - Adjusted hyperparameters to balance overfitting risks but showed diminishing returns.
+   - Reinforced the need for larger datasets or external justifications to enhance generalization.
+
+4. **Challenges Persist**:
+   - All models struggled with ambiguous labels and dataset imbalance, limiting their ability to achieve significant accuracy improvements.
 
