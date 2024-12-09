@@ -1,42 +1,39 @@
 # Simplifying Fact-Checking with Transformers: A Study on the LIAR Dataset
 
 ## Overview
-This project explores the use of Transformer-based models for fact-checking tasks using the LIAR dataset. The LIAR dataset is a challenging benchmark with six nuanced categories for classifying news statements: True, Mostly True, Half True, Barely True, False, and Pants on Fire.
+Fact-checking has become increasingly critical in combating misinformation. The LIAR dataset, a widely used benchmark for this task, categorizes statements into six nuanced labels:
+- **True**
+- **Mostly True**
+- **Half True**
+- **Barely True**
+- **False**
+- **Pants on Fire**
 
-### Problem Statement
-The task of fact-checking is inherently difficult due to:
-1. **Class Imbalance**: Some categories (e.g., Pants on Fire) are severely underrepresented.
-2. **Ambiguity**: Labels like Mostly True and Half True overlap significantly, leading to frequent misclassifications.
-3. **Real-World Impact**: Accurate fact-checking models are critical for combating misinformation.
+Each statement is accompanied by metadata such as the speaker, their affiliation, and the context, making it a rich yet challenging dataset.
 
-### Approach
-To address these challenges, the project:
-1. **Simplified Prior Work**: Leveraged Hugging Face's Transformers library to streamline workflows.
-2. **Baseline Model**: Fine-tuned a pre-trained BERT model on the LIAR dataset using only statement text.
-3. **Improved Model**: Incorporated metadata (speaker, affiliation, context) and implemented weighted loss to address class imbalance.
-4. **Fine-Tuned Model**: Applied hyperparameter optimization, including lower learning rates and longer training epochs, for further refinement.
+---
 
-### Summary of Results
-The final model achieved comparable performance to previous approaches, emphasizing the effectiveness of simplifications while highlighting the inherent challenges of the LIAR dataset.
+## Problem
+Fact-checking presents several key challenges:
+1. **Class Imbalance**: Certain categories, like "Pants on Fire," are underrepresented, leading to biased model predictions.
+2. **Ambiguous Labels**: Overlapping categories (e.g., "Mostly True" vs. "Half True") often confuse classification models.
+3. **Dataset Limitations**: The relatively small size of the LIAR dataset restricts model generalization, especially for nuanced classifications.
 
+---
 
-## Background and Inspiration
-Fact-checking is a critical tool in the fight against misinformation, especially in today's information-driven society. The LIAR dataset has been a standard benchmark for exploring fact-checking models, but prior research has faced several challenges:
-- **Complex Labels**: Fact-checking often involves subjective or nuanced interpretations, making it difficult for models to classify statements accurately.
-- **Class Imbalance**: Underrepresented categories like "Pants on Fire" skew evaluation metrics and reduce model reliability.
-- **Data Limitations**: The dataset is relatively small for a task requiring deep language understanding.
+## Approach
+This project builds on prior work, focusing on simplifying workflows while leveraging state-of-the-art Transformer models. We explored three approaches:
+1. **Baseline Model**: Fine-tuned BERT using only the statement text.
+2. **Improved Model**: Incorporated metadata (e.g., speaker, affiliation) and applied weighted loss to address class imbalance.
+3. **Fine-Tuned Model**: Optimized hyperparameters (e.g., learning rates, batch sizes) to improve training stability.
 
-Previous studies using the LIAR dataset, such as the work detailed in the LIAR-PLUS paper, achieved approximately 27%-38% accuracy on this challenging multi-class task. Their approaches involved adding external metadata and sophisticated architectures like Siamese networks to boost performance.
+To make the project practical and interactive, we also deployed a Gradio app for real-time classification of statements.
 
-### How This Project Builds on Previous Work
-1. **Simplification**:
-   - Instead of complex architectures, this project leverages modern tools like Hugging Face's Transformers to streamline the workflow.
-   - Metadata is incorporated directly into the input sequence, eliminating the need for additional branches in the model.
+---
 
-2. **Focus on Generalization**:
-   - While achieving high accuracy is a challenge due to the dataset's limitations, this project prioritizes clarity, ease of use, and insights from simpler approaches.
-
-3. **Deployability**:
-   - A Gradio app is included to demonstrate real-time classification, making the project accessible to users without extensive technical expertise.
+## Summary of Findings
+- **Performance**: Achieved comparable accuracy to prior research while using simpler, more modern workflows.
+- **Metadata**: Incorporating speaker and context metadata improved the performance of underrepresented categories.
+- **Challenges**: Dataset imbalance and ambiguous labels remain significant hurdles to achieving high generalization.
 
 
