@@ -90,7 +90,9 @@ This project utilized three sequential approaches to model development, leveragi
   - **Speaker**
   - **Party affiliation**
   - **Context**
-  These features were combined into a single input string separated by `[SEP]` tokens. This approach established a reference point for evaluating improvements.
+
+These features were combined into a single input string separated by `[SEP]` tokens. This approach established a reference point for evaluating improvements.
+
 - **Implementation**:
   - Used Hugging Face's `Trainer` API for fine-tuning.
   - Trained for 3 epochs with a learning rate of `2e-5`.
