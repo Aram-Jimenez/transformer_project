@@ -2,12 +2,13 @@
 
 ## Overview
 Fact-checking has become increasingly critical in combating misinformation. The LIAR dataset, a widely used benchmark for this task, categorizes statements into six nuanced labels:
-- **True**
-- **Mostly True**
-- **Half True**
-- **Barely True**
-- **False**
-- **Pants on Fire**
+
+- **True**: Statements that are entirely factual and accurate.
+- **Mostly True**: Statements that are mostly factual but may lack important context or have minor inaccuracies.
+- **Half True**: Statements that are partially accurate but leave out significant details or take things out of context.
+- **Barely True**: Statements that contain a kernel of truth but are mostly misleading or inaccurate.
+- **False**: Statements that are entirely incorrect and lack factual basis.
+- **Pants on Fire**: Statements that are not only false but also absurd or ridiculous.
 
 Each statement is accompanied by metadata, including:
 - **Speaker**: The person who made the statement.
