@@ -282,7 +282,7 @@ This project builds on prior work, simplifying workflows and leveraging state-of
 3. **Workflow Accessibility**:
    - The project's simplified approach and interactive deployment prioritize reproducibility and practical usage, making it accessible to a broader audience.
 
----
+
 
 ### Future Directions
 
@@ -297,5 +297,19 @@ This project builds on prior work, simplifying workflows and leveraging state-of
 3. **Explainability**:
    - Add interpretability tools to the Gradio app (e.g., attention visualizations) to increase user trust and provide insights into the model’s decision-making.
 
-4. **Real-World Application**:
-   - Collaborate with fact-checking organizations to test and refine the model in real-world scenarios.
+
+
+## References
+1. **"Liar, Liar Pants on Fire": A New Benchmark Dataset for Fake News Detection**  
+   *Author*: William Yang Wang  
+   *Description*: This paper introduces the LIAR dataset, a benchmark for fake news classification, and evaluates baseline and hybrid models.  
+   [Read the Paper](https://paperswithcode.com/paper/liar-liar-pants-on-fire-a-new-benchmark)
+
+2. **Where is Your Evidence: Improving Fact-checking by Justification Modeling**  
+   *Authors*: Tariq Alhindi, Savvas Petridis, Smaranda Muresan  
+   *Description*: This paper introduces the LIAR-PLUS dataset, incorporating justifications to improve fact-checking tasks.  
+   [Read the Paper](https://aclanthology.org/W18-5513/)
+
+3. **Triple Branch BERT Siamese Network for Fake News Classification on LIAR-PLUS Dataset**  
+   *Description*: Implements a triple-branch Siamese network architecture using BERT for improved fake news classification on the LIAR-PLUS dataset.  
+   [Visit Repository](https://github.com/manideep2510/siamese-BERT-fake-news-detection-LIAR?tab=readme-ov-file)
