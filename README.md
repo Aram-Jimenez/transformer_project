@@ -1,5 +1,10 @@
 # Simplifying Fact-Checking with Transformers: A Study on the LIAR Dataset
 
+## Presentation Video
+
+You can watch the presentation video [here](https://drive.google.com/drive/folders/1PMT7mafBeHeqcVVM5ExFVq7rlagtd7US?usp=sharing).
+
+
 ## Overview
 Fact-checking has become increasingly critical in combating misinformation. The LIAR dataset, a widely used benchmark for this task, categorizes statements into six nuanced labels:
 
