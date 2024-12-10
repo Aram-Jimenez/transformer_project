@@ -26,7 +26,7 @@ Fact-checking presents several key challenges:
 
 
 ## Approach
-This project builds on prior research while emphasizing simplicity and practicality. Using state-of-the-art Transformer models, we explored three approaches:
+This project builds on prior research while emphasizing simplicity and practicality. Using state-of-the-art Transformer models, I explored three approaches:
 1. **Baseline Model**:
    - Fine-tuned a pre-trained BERT model using only the statement text.
    - Established a reference point for further improvements.
@@ -206,11 +206,8 @@ This project builds on prior work, simplifying workflows and leveraging state-of
    - Unlike prior studies, this project excluded external justifications (e.g., LIAR-PLUS) and complex architectures (e.g., Siamese networks).
    - It demonstrated that fine-tuning a standard Transformer model (`bert-base-uncased`) can yield competitive results on the LIAR dataset, simplifying implementation while maintaining comparable performance.
 
-2. **Practical Deployment**:
-   - The development of a Gradio app makes the model accessible for real-world use, allowing users to input statements and receive classification predictions in real-time.
-   - This bridges the gap between research and practical applications, empowering educators, journalists, and researchers to explore automated fact-checking.
 
-3. **Benchmarking and Limitations**:
+2. **Benchmarking and Limitations**:
    - While achieving a test accuracy of 27.36% and an F1 score of 0.272, the project highlights challenges in multi-class classification, such as:
      - Class imbalance.
      - Overlapping and ambiguous labels.
