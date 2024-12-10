@@ -193,3 +193,109 @@ Below are the confusion matrices for each model, providing a detailed view of cl
 
 3. **Fine-Tuned Model**:
    - Hyperparameter tuning balanced some performance but struggled to address dataset limitations, with confusion persisting between ambiguous labels.
+
+
+## Critical Analysis
+
+This project builds on prior work, simplifying workflows and leveraging state-of-the-art Transformers for fact-checking tasks. Below is a detailed analysis of the project's impact, insights, and comparisons with previous works.
+
+### Impact of This Project
+
+1. **Simplified Workflow**:
+   - Unlike prior studies, this project excluded external justifications (e.g., LIAR-PLUS) and complex architectures (e.g., Siamese networks).
+   - It demonstrated that fine-tuning a standard Transformer model (`bert-base-uncased`) can yield competitive results on the LIAR dataset, simplifying implementation while maintaining comparable performance.
+
+2. **Practical Deployment**:
+   - The development of a Gradio app makes the model accessible for real-world use, allowing users to input statements and receive classification predictions in real-time.
+   - This bridges the gap between research and practical applications, empowering educators, journalists, and researchers to explore automated fact-checking.
+
+3. **Benchmarking and Limitations**:
+   - While achieving a test accuracy of 27.36% and an F1 score of 0.272, the project highlights challenges in multi-class classification, such as:
+     - Class imbalance.
+     - Overlapping and ambiguous labels.
+     - The limited size of the LIAR dataset restricting generalization.
+
+
+
+### Comparison with Previous Works
+
+#### **Previous Work 1: Liar, Liar Pants on Fire!**
+- **Models Used**: Baselines (Logistic Regression, SVM), CNN, Bi-LSTM, and hybrid models with metadata integration.
+- **Key Results**:
+  - CNN achieved 27.0% test accuracy (text-only).
+  - Hybrid CNN with metadata improved to 27.4% test accuracy.
+- **Insights**:
+  - Metadata provided limited improvements due to shallow contextual modeling.
+
+#### **Previous Work 2: Where is Your Evidence?**
+- **Dataset**: Introduced LIAR-PLUS with human-extracted justifications.
+- **Models Used**: Feature-based (LR, SVM) and neural models (Bi-LSTM, P-BiLSTM) with justification modeling.
+- **Key Results**:
+  - Best F1 score: 37% on test set (S+MJ condition with justifications).
+  - Best accuracy: 35% on test set (six-way classification).
+- **Insights**:
+  - Justification modeling significantly improved performance.
+  - Neural models performed comparably to feature-based approaches.
+
+#### **Previous Work 3: Fake News Classification (LIAR-PLUS)**
+- **Models Used**: Fine-tuned BERT and Triple Branch Siamese Network with metadata and credit scoring.
+- **Key Results**:
+  - Best six-way classification accuracy: 37.4%.
+- **Insights**:
+  - Metadata and credit scoring enhanced class separation.
+  - Model complexity led to significant computational overhead.
+
+
+
+### **This Project: Simplified Workflow with LIAR Dataset**
+
+#### Differences from Previous Work:
+1. **Focus on LIAR Dataset**:
+   - Excluded external justifications and relied solely on metadata within the LIAR dataset.
+   - Simplified implementation compared to works utilizing LIAR-PLUS or justification modeling.
+
+2. **Transformer-Based Simplicity**:
+   - Fine-tuned `bert-base-uncased` without complex architectures like Siamese networks or parallel modeling.
+
+3. **Practical Deployment**:
+   - Developed a Gradio app for real-time classification, demonstrating practical usability beyond academic experimentation.
+
+#### Results Comparison:
+| Study                     | Dataset     | Model                          | Test Accuracy (%) | 
+|---------------------------|-------------|---------------------------------|-------------------|
+| **Liar, Liar (2017)**      | LIAR        | CNN + Metadata                 | 27.4              | 
+| **Where is Your Evidence** | LIAR-PLUS   | Bi-LSTM + Justification         | 35.0              |      
+| **Fake News Classification** | LIAR-PLUS | Triple Siamese BERT            | 37.4              | 
+| **This Project**           | LIAR        | Fine-Tuned BERT                | 27.36             | 
+
+
+
+### Key Takeaways
+
+1. **Simplified Metadata Integration**:
+   - By combining speaker, party affiliation, and context as enriched text inputs, the project achieved comparable results to hybrid and justification-based models.
+
+2. **Dataset Limitations**:
+   - Results reinforce the challenges of small datasets like LIAR, which struggle with nuanced multi-class classification tasks.
+   - External evidence or augmented datasets (e.g., LIAR-PLUS) remain crucial for significant performance gains.
+
+3. **Workflow Accessibility**:
+   - The project's simplified approach and interactive deployment prioritize reproducibility and practical usage, making it accessible to a broader audience.
+
+---
+
+### Future Directions
+
+1. **Dataset Augmentation**:
+   - Incorporate LIAR-PLUS justifications or other external evidence to improve label discrimination.
+   - Expand the dataset to mitigate class imbalance and enhance generalization.
+
+2. **Model Advancements**:
+   - Experiment with advanced Transformer architectures (e.g., T5 or GPT) to handle multi-task objectives like classification and justification generation.
+   - Investigate few-shot learning to overcome small dataset limitations.
+
+3. **Explainability**:
+   - Add interpretability tools to the Gradio app (e.g., attention visualizations) to increase user trust and provide insights into the model’s decision-making.
+
+4. **Real-World Application**:
+   - Collaborate with fact-checking organizations to test and refine the model in real-world scenarios.
